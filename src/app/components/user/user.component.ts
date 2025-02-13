@@ -28,6 +28,7 @@ export class UserComponent {
   onSelectUser() {
     // this.avatar.set()
     this.select.emit(this.id);
+    this.select.emit(this.name);
     console.log("Clicked")
   }
 
