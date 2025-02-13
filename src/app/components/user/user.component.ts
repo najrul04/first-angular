@@ -1,4 +1,4 @@
-import { Component, computed, Input, input} from '@angular/core';
+import { Component, computed, EventEmitter, Input, input, Output} from '@angular/core';
 import { DUMMY_USERS } from '../../dummy-users';
 
 @Component({
@@ -10,9 +10,10 @@ import { DUMMY_USERS } from '../../dummy-users';
 })
 export class UserComponent {
   number = 0;
-
+@Input({required: true}) id!: string;
  @Input({required: true}) avatar!: string;
  @Input({required: true}) name!: string;
+ @Output() select = new EventEmitter();
 // avatar = input.required<string>()
 // name = input.required<string>()
 
@@ -26,6 +27,7 @@ export class UserComponent {
 
   onSelectUser() {
     // this.avatar.set()
+    this.select.emit(this.id);
     console.log("Clicked")
   }
 
